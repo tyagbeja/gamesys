@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Time Travel Booking</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Planet Express Time Travel</h1>
+	<p th:text="'Booking status: ' + ${booking.status}" />
+	<p th:text="'Message: ' + ${booking.message}" />
+    <p th:text="'id: ' + ${passenger.pgid}" />
+    <p th:text="'place: ' + ${passenger.place}" />
+    <p th:text="'date: ' + ${passenger.date}" />
+    <a href="/greeting">Submit trip</a>
+</body>
+</html>

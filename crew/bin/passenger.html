@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Time Travel Booking</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Planet Express Time Travel</h1>
+    <form action="#" th:action="@{/passenger}" th:object="${passenger}" method="post">
+    	<p>PGID: <input type="number" th:field="*{pgid}" /></p>
+        <p>Place: <input type="text" th:field="*{place}" /></p>
+        <p>Date: <input type="date" th:field="*{date}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

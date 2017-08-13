@@ -1,0 +1,44 @@
+# This overrides is used for development environments
+# in conjunction with the docker-compose.yml.
+# running:
+# docker-compose build --pull
+# docker-compose up -d
+# will rebuild the docker files, using the details in this file.
+version: '2'
+services:
+# Core components here
+   planetexpress:
+     build: planetexpress
+     depends_on:
+       - mysql
+     environment:
+      - spring.datasource.url=jdbc:mysql://mysql/planetexpress
+      - spring.datasource.username=bender
+      - spring.datasource.password=password
+      - spring.jpa.hibernate.ddl-auto=create-drop
+     ports:
+      - "4000:8080"
+   crew:
+     build: crew
+     depends_on:
+       - mysql
+     environment:
+      - planetexpress.url=http://planetexpress:8080/passenger/add
+     ports:
+      - "4001:8080"
+   mysql:
+     image: mysql
+     ports:
+      - "3306:3306"
+     environment:
+      - MYSQL_ROOT_PASSWORD=pw123
+      - MYSQL_DATABASE=planetexpress
+      - MYSQL_USER=bender
+      - MYSQL_PASSWORD=password
+networks:
+  default:
+    driver: bridge
+volumes:
+  ack:
+  cdr:
+
